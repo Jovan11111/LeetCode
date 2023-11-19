@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int reductionOperations(vector<int>& nums) {
+        unordered_map<int,int> mapa;
+        int ind = 0;
+        int sum = 0;
+        int prev = -1e9;
+
+        sort(nums.begin() , nums.end());
+        int min = nums[0];
+
+        for(int i  = 0; i < nums.size(); i++) mapa[nums[i]]++;
+        
+        while(ind < nums.size() and nums[ind] == min) ind++;
+        
+        if(ind >= nums.size()) return 0;
+        
+        
+        for(int i = nums.size() - 1; i >= ind; i--){
+            if(nums[i] == prev) continue;
+            sum +=  mapa[nums[i]] + (nums.size()-1-i);
+            prev = nums[i];
+        }
+        return sum;
+    }
+};
