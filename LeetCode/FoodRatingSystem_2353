@@ -1,0 +1,46 @@
+class FoodRatings {
+public:
+    FoodRatings(vector<string>& foods, vector<string>& cuisines, vector<int>& ratings) {
+        this->food = foods;
+        this->cuisines = cuisines;
+        this->ratings = ratings;
+    }
+    
+    void changeRating(string food, int newRating) {
+        for(int i = 0; i < this->food.size(); i++){
+            if(this->food[i] == food) this->ratings[i] = newRating;
+        }
+    }
+    
+    string highestRated(string cuisine) {
+        int max = 0;
+        int ind = -1;
+        for(int i = 0; i <food.size(); i++){
+            if(cuisines[i] == cuisine){
+                if(ratings[i] > max){
+                    max = ratings[i];
+                    ind = i;
+                }
+                if(ratings[i] == max){
+                    if(food[ind] > food[i]){
+                        max = ratings[i];
+                        ind = i;
+                    }
+                }
+            }
+
+        }
+        return food[ind];
+    }
+private:
+    std::vector<std::string> food;
+    std::vector<std::string> cuisines;
+    std::vector<int> ratings;
+};
+
+/**
+ * Your FoodRatings object will be instantiated and called as such:
+ * FoodRatings* obj = new FoodRatings(foods, cuisines, ratings);
+ * obj->changeRating(food,newRating);
+ * string param_2 = obj->highestRated(cuisine);
+ */
