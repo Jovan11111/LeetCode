@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/spiral-matrix/
+# Moje resenje
+# Optimalno, O(mxn), O(1)
 class Solution(object):
     def spiralOrder(self, matrix):
         m = len(matrix)
