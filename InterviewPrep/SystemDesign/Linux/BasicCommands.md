@@ -1,4 +1,4 @@
-```console
+```sh
 ls # Lists names of all files in currect DIR
 
 ll # Lists all files with more details about them
