@@ -1,0 +1,16 @@
+class Solution {
+public:
+    std::vector<int> getSumAbsoluteDifferences(std::vector<int>& nums) {
+        std::vector<int> ret(nums.size(), 0);
+
+        int sum = std::accumulate(nums.begin(), nums.end(), 0);
+
+        int x = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            ret[i] = (nums[i] * (i-1) - x) + ((sum - x) - nums[i] * (nums.size() - i - 1));
+            x += nums[i];
+        }
+
+        return ret;
+    }
+};

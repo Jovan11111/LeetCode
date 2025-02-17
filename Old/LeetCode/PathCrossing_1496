@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isPathCrossing(std::string path) {
+        std::unordered_set<std::string> visited;
+        int px = 0;
+        int py = 0;
+
+        visited.insert("0,0");
+
+        for (char direction : path) {
+            if (direction == 'N') py++;
+            else if (direction == 'S') py--;
+            else if (direction == 'E') px++;
+            else px--;
+
+            std::string currentPos = std::to_string(px) + "," + std::to_string(py);
+
+            if (visited.count(currentPos) > 0) {
+                return true;
+            }
+
+            visited.insert(currentPos);
+        }
+
+        return false;
+    }
+};

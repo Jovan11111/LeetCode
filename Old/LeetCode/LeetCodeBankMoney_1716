@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int totalMoney(int n) {
+        int ret = 0;
+        int num = n/7;
+        for(int i  = 0; i < num; i++){
+          ret += 28 + i*7;
+        }
+        for(int i = 1; i < n - num * 7 +1; i++){
+          ret+=num+i;
+        }
+
+        return ret;
+    }
+};

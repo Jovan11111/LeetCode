@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) {
+        std::vector<std::vector<int>> ret(grid.size(), std::vector<int>(grid[0].size()));
+        std::unordered_map<int, int> row1;
+        std::unordered_map<int, int> row0;
+        std::unordered_map<int, int> col1;
+        std::unordered_map<int, int> col0;
+        int cnt1 = 0;
+        int cnt0 = 0;
+        for(int i = 0; i < grid.size();i++){
+            cnt1 = cnt0 = 0;
+            for(int j = 0 ; j < grid[0].size(); j++){
+                if(grid[i][j] == 0) cnt0++;
+                if(grid[i][j] == 1) cnt1++;
+            }
+            row1[i] = cnt1;
+            row0[i] = cnt0;
+        }
+        cnt1 = cnt0 = 0;
+        for(int j = 0; j < grid[0].size(); j++){
+            cnt1 = cnt0 = 0;
+            for(int i = 0; i < grid.size(); i++){
+                if(grid[i][j] == 0) cnt0++;
+                if(grid[i][j] == 1) cnt1++;
+            }
+            col1[j] = cnt1;
+            col0[j] = cnt0;
+        }
+        for(int i = 0; i < ret.size(); i++){
+            for(int j = 0; j < ret[0].size(); j++){
+                ret[i][j] = col1[j]+row1[i]-row0[i]-col0[j];
+            }
+        }
+        return ret;
+    }
+};

@@ -1,0 +1,21 @@
+
+class Solution {
+public:
+    int minCost(string colors, vector<int>& neededTime) {
+        int ret = 0; 
+        int i = 0, x = 0; 
+
+        while (i < neededTime.size() && x < neededTime.size()) {
+            int sum = 0, max = 0;
+            while (x < neededTime.size() && colors[i] == colors[x]) {
+                sum += neededTime[x];
+                max = max(max, neededTime[x]);
+                x++; 
+            }
+            ret += sum - max; 
+            i = x; 
+        }
+        return ret; 
+    }
+};
+
