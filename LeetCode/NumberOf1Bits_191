@@ -1,9 +1,0 @@
-class Solution {
-public:
-    int hammingWeight(uint32_t n) {
-        std::bitset<32> binaryRepresentation(n);
-        std::string bs = binaryRepresentation.to_string();
-        auto i = std::count(bs.begin(), bs.end(), '1');
-        return i;
-    }
-};
