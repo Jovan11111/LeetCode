@@ -25,4 +25,4 @@ class Solution(object):
                 cur.next.val -= 10
             cur = cur.next
         return head
-        
+    
