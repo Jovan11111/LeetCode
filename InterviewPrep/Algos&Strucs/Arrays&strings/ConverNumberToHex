@@ -1,0 +1,29 @@
+# https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/
+
+class Solution(object):
+    def toHex(self, num):
+        if num < 0:
+            num += 2 ** 32 
+
+        if num == 0:
+            return "0"
+
+        numToHex = {
+            0:"0", 1:"1", 2:"2", 3:"3", 4:"4",
+            5:"5", 6:"6", 7:"7", 8:"8",
+            9:"9", 10:"a", 11:"b", 12:"c",
+            13:"d", 14:"e", 15:"f"}
+        nums = []
+        ret = ""        
+        numSize = 0
+        while num >= 16 ** numSize:
+            numSize += 1
+
+        for i in range(numSize -1, -1, -1):
+            
+            nums.append(num // 16 ** i)
+            num = num % 16 ** i
+        
+        return "".join([numToHex[el] for el in nums])
+        
+    
