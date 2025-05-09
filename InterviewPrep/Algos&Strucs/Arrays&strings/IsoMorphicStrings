@@ -1,0 +1,19 @@
+# https://leetcode.com/problems/isomorphic-strings/description/
+
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        hashMap = {}
+        tValues = set()
+        for i in range(len(s)):
+            if s[i] in hashMap:
+                if hashMap[s[i]] != t[i]:
+                    return False
+            else:
+                hashMap[s[i]] = t[i]
+                if t[i] in tValues:
+                    return False
+                else:
+                    tValues.add(t[i])
+
+        return True
+         
