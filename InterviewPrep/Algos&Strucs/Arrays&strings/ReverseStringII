@@ -1,0 +1,13 @@
+# https://leetcode.com/problems/reverse-string-ii/description/
+
+class Solution(object):
+    def reverseStr(self, s, k):
+        retString = ""
+        for i in range(0, len(s), 2*k):
+            m = min(len(s), i+2*k)
+            tempString = s[i:m]
+            reversedPart = tempString[0:k]
+            retString += reversedPart[::-1]
+            retString += tempString[k:]
+
+        return retString
