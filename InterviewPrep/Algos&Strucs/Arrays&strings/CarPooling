@@ -1,0 +1,22 @@
+# https://leetcode.com/problems/car-pooling/description/
+
+class Solution(object):
+    def carPooling(self, trips, capacity):
+        maxx = 0
+        minn = float("inf")
+        for el in trips:
+            maxx = max(maxx, el[2])
+            minn = min(minn, el[1])
+        stops = [0] * (maxx - minn)
+
+        for el in trips:
+            for i in range(el[1], el[2]):
+                if stops[i-minn] + el [0] > capacity:
+                    return False
+                stops[i-minn] += el[0]
+        return True
+
+        
+
+
+    
