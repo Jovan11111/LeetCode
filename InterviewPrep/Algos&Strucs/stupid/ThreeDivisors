@@ -1,0 +1,15 @@
+# https://leetcode.com/problems/three-divisors/
+
+class Solution(object):
+    def isThree(self, n):
+        divisorExists = False
+        if n < 3:
+            return False
+        for i in range(2, n // 2 + 1):
+            if n % i == 0:
+                if divisorExists:
+                    return False
+                divisorExists = True
+
+        return divisorExists
+
