@@ -1,0 +1,28 @@
+# https://leetcode.com/problems/basic-calculator-ii/description/
+
+class Solution(object):
+    def calculate(self, s):
+        stack = []
+        curNum = 0
+        op = "+"
+        ops = ["-", "+", "/", "*"]
+        for i in range(len(s)):
+            if s[i].isdigit():
+                curNum = curNum*10 + int(s[i])
+            if s[i] in ops or i == len(s)-1:
+                if op == "-":
+                    stack.append(-1*curNum)
+                elif op == "+":
+                    stack.append(curNum)
+                elif op == "*":
+                    el = stack[-1]
+                    stack.pop()
+                    stack.append(el*curNum)
+                elif op == "/":
+                    el = stack[-1]
+                    stack.pop()
+                    stack.append(int(el / float(curNum)))
+                curNum = 0
+                op = s[i]
+        return sum(stack)
+
