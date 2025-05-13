@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon/
+# https://leetcode.com/problems/subsets/
 
 class Solution(object):
     def subsets(self, nums):
